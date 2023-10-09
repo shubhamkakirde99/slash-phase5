@@ -40,8 +40,8 @@ def search_items_API(
         list of search results as JSON List
     '''
     # logging in file
-    file = open("logger.txt", "a")
-    file.write('amazon query:' + str(item_name)+'\n')
+    # file = open("logger.txt", "a")
+    # file.write('amazon query:' + str(item_name)+'\n')
 
     # building argument
     args = {
@@ -70,7 +70,7 @@ def search_items_API(
     # calling scraper.scrape to fetch results
     itemList = scr.scrape(args=args, scrapers=scrapers)
     if not export and len(itemList) > 0:
-        file.close()
+        # file.close()
         return itemList
     else:
         # No results

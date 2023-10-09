@@ -49,14 +49,14 @@ if st.button('Search') and product and website:
     url = []
     price = []
     site = []
-    
-    for result in results:
-        if result!={} and result['price']!='':
-            description.append(result['title'])
-            url.append(result['link'])
-            price.append(float(''.join(result['price'].split('$')[-1].strip('$').rstrip('0').split(','))))
-            site.append(result['website'])
-            
+    if results:
+        for result in results:
+            if result!={} and result['price']!='':
+                description.append(result['title'])
+                url.append(result['link'])
+                price.append(float(''.join(result['price'].split('$')[-1].strip('$').rstrip('0').split(','))))
+                site.append(result['website'])
+                
     if len(price):
         
         def highlight_row(dataframe):

@@ -16,6 +16,10 @@ from pydantic import BaseModel
 import csv
 import nest_asyncio
 
+import sys
+
+sys.path.append("D:\\se-slash-phase3")
+
 # local imports
 import src.scraper_mt as scr
 
