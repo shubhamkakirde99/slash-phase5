@@ -13,12 +13,13 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from pathlib import Path
 import csv
 import nest_asyncio
 
 import sys
-
-sys.path.append("D:\\se-slash-phase3")
+path_root = Path(__file__).parents[1]
+sys.path.append(str(path_root))
 
 # local imports
 import src.scraper_mt as scr
