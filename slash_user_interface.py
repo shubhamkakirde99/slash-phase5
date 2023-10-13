@@ -15,15 +15,13 @@ import pandas as pd
 #from link_button import link_button
 
 
-# Hide Footer in Streamlit
-hide_menu_style = """
+# Load external CSS for styling
+with open('assets/style.css') as f:
+    st.markdown(f"""
         <style>
-        footer {visibility: hidden;}
+        {f.read()}
         </style>
-        """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
-
-
+    """, unsafe_allow_html=True)
 
 # Display Image
 st.image("assets/slash.png")
