@@ -58,7 +58,7 @@ BESTBUY = {
     'item_indicator': {
         'class': 'sku-item'
     },
-    'title_indicator': 'h4.sku-header a',
+    'title_indicator': 'h4.sku-title a',
     'price_indicator': 'div.priceView-customer-price span',
     'link_indicator': 'a.image-link',
 }
@@ -102,8 +102,16 @@ class scrape_target(Thread):
             'useragent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
             'visitor_id': 'AAA',
         }
-
-        data = requests.get(api_url, params=params).json()
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',  # noqa: E501
+            'Accept-Encoding': 'gzip, deflate',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '0',
+            'Cache-Control': 'no-cache'
+        }
+        data = requests.get(api_url, params=params, headers=headers).json()
 
         items = []
         if data["data"]:
@@ -111,7 +119,7 @@ class scrape_target(Thread):
                 item = {
                     'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
                     'title': formatTitle(p['item']['product_description']['title']),
-                    'price': '$' + str(p['price']['current_retail']),
+                    'price': '$' + str(p['price']['reg_retail']),
                     'website': 'target',
                     #'link': shorten_url(p['item']['enrichment']['buy_url'])
                     'link': p['item']['enrichment']['buy_url']
