@@ -1,18 +1,26 @@
-"""
-Copyright (c) 2021 Anshul Patel
-This code is licensed under MIT license (see LICENSE.MD for details)
-
-@author: slash
-"""
-
-# Import Libraries
 import sys
 sys.path.append('../')
+import pandas as pd
 import streamlit as st
 from src.main_streamlit import search_items_API
 from src.url_shortener import shorten_url
-import pandas as pd
-#from link_button import link_button
+import re
+
+def extract_and_format_numbers(input_string):
+    # Use regular expressions to find all numbers in the input string
+    numbers = re.findall(r'\d+\.\d+|\d+', input_string)
+
+    if len(numbers) >= 2:
+        # Take the first number and add a decimal point before the second number
+        formatted_output = '$'+ numbers[0] + '.' + numbers[1]
+        return formatted_output
+    elif len(numbers) == 1:
+        # If there's only one number, return it as is
+        return '$'+ numbers[0]
+    else:
+        return "No valid numbers found in the input."
+
+
 
 def ensure_https_link(link_text):
     if link_text.startswith("http://") or link_text.startswith("https://"):
@@ -31,6 +39,12 @@ def convert_df_to_html(input_df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
      return input_df.to_html(escape=False, formatters=dict(Image=path_to_image_html,Link=path_to_url_html))
 
+@st.cache
+def convert_df_to_csv(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
+
+st.set_page_config(page_title="Slash - Product Search", page_icon="🔍")
 
 # Load external CSS for styling
 with open('assets/style.css') as f:
@@ -43,48 +57,57 @@ with open('assets/style.css') as f:
 # Display Image
 st.image("assets/slash.png")
 
-st.write("Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across multiple websites")
-product = st.text_input('Enter the product item name')
-website = st.selectbox('Select the website',('Amazon', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Costco', 'All'))
+# Create a two-column layout
+col1, col2,col3 = st.columns(3)
+
+# Input Controls
+with col1:
+    product = st.text_input('Enter the product item name')
+
+with col2:
+    website = st.selectbox('Select the website', ('Walmart', 'Ebay', 'BestBuy', 'Target', 'All'))
+
+with col3:
+    button = st.button('Search')
 
 website_dict = {
-        'Amazon':'az',
-        'Walmart':'wm',
-        'Ebay':'eb',
-        'BestBuy':'bb',
-        'Target':'tg',
-        'Costco':'cc',
-        'All':'all'
-        }
-# Pass product and website to method
-if st.button('Search') and product and website:
+    'Amazon': 'az',
+    'Walmart': 'wm',
+    'Ebay': 'eb',
+    'BestBuy': 'bb',
+    'Target': 'tg',
+    'Costco': 'cc',
+    'All': 'all'
+}
+
+# Search button
+if button and product and website:
     results = search_items_API(website_dict[website], product)
     # Use st.columns based on return values
     description = []
     url = []
     price = []
     site = []
+    image_url = []
+
     if results:
         for result in results:
-            if result!={} and result['price']!='':
+            if result != {} and result['price'] != '':
                 description.append(result['title'])
                 url.append(result['link'])
-                price.append(float(''.join(result['price'].split('$')[-1].strip('$').rstrip('0').split(','))))
                 site.append(result['website'])
-                
+                price.append(extract_and_format_numbers(result['price']))
+                image_url.append(result['img_link'])
     if len(price):
         
         def highlight_row(dataframe):
-            #copy df to new - original data are not changed
             df = dataframe.copy()
             minimumPrice = df['Price'].min()
-            #set by condition
             mask = df['Price'] == minimumPrice
             df.loc[mask, :] = 'background-color: lightgreen'
-            df.loc[~mask,:] = 'background-color: ""'
+            df.loc[~mask, :] = 'background-color: ""'
             return df
-        
-        dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url, 'Website':site})
+        dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
         st.balloons()
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
 
@@ -95,7 +118,6 @@ if st.button('Search') and product and website:
             unsafe_allow_html=True
         )
         html += '</div>'
-
         csv = convert_df_to_csv(dataframe)
         st.download_button(
             label="Download data as CSV",
@@ -105,17 +127,13 @@ if st.button('Search') and product and website:
         )
 
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Visit the Website</h1>", unsafe_allow_html=True)
-
         min_value = min(price)
         min_idx = [i for i, x in enumerate(price) if x == min_value]
         for minimum_i in min_idx:
             link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
-            st.write("Cheapest Product [link]("+link_button_url+")")
-            #link_button(site[minimum_i], link_button_url)
-        
+            st.write("Cheapest Product [link](" + link_button_url + ")")
     else:
-        st.error('Sorry!, there is no other website with same product')
-        
+        st.error('Sorry, the website does not have similar products')
 
 
 # Footer
@@ -149,5 +167,3 @@ text-align: center;
 </div>
 """
 # st.markdown(footer, unsafe_allow_html=True)
-
-

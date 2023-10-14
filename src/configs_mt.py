@@ -24,7 +24,9 @@ WALMART = {
     },
     'title_indicator': 'span.lh-title',
     'price_indicator': 'div.lh-copy',
-    'link_indicator': 'a'
+    'link_indicator': 'a',
+    'rating_indicator': 'div.flex.items-center.mt2 span.w_iUH7',
+    'img_indicator': 'div.relative.overflow-hidden img'
 }
 
 AMAZON = {
@@ -61,6 +63,7 @@ BESTBUY = {
     'title_indicator': 'h4.sku-title a',
     'price_indicator': 'div.priceView-customer-price span',
     'link_indicator': 'a.image-link',
+    'img_indicator': 'div.shop-sku-list-item div div a img'
 }
 
 
@@ -122,7 +125,9 @@ class scrape_target(Thread):
                     'price': '$' + str(p['price']['reg_retail']),
                     'website': 'target',
                     #'link': shorten_url(p['item']['enrichment']['buy_url'])
-                    'link': p['item']['enrichment']['buy_url']
+                    'link': p['item']['enrichment']['buy_url'],
+                    'img_link': p['item']['enrichment']['images']['primary_image_url'],
+                    # 'rating': p['ratings_and_reviews']['statistics']['rating']['average']
                 }
                 items.append(item)
 
@@ -162,14 +167,17 @@ class scrape_ebay(Thread):
         items = []
         for p in data['searchResult']['item']:
             item = {
-                'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-                'title': formatTitle(p['title']),
-                'price': '$' + p['sellingStatus']['currentPrice']['value'],
-                'website': 'ebay',
-                #'link': shorten_url(p['viewItemURL'])
-                'link': p['viewItemURL']
-            }
+                    'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                    'title': formatTitle(p['title']),
+                    'price': '$' + p['sellingStatus']['currentPrice']['value'],
+                    'website': 'ebay',
+                    #'link': shorten_url(p['viewItemURL'])
+                    'link': p['viewItemURL'],
+                    'img_link': p['galleryURL']
+                }
+
             items.append(item)
+            
 
         self.result = items
 

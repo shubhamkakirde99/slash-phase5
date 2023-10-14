@@ -48,14 +48,20 @@ class search(Thread):
         if not page:
             self.result = []
 
+        results = []
         # begin parsing page content
-        results = page.find_all(self.config['item_component'], self.config['item_indicator'])
+        if page:
+            results = page.find_all(self.config['item_component'], self.config['item_indicator'])
         products = []
+        print(len(results))
         for res in results:
             title = res.select(self.config['title_indicator'])
             price = res.select(self.config['price_indicator'])
             link = res.select(self.config['link_indicator'])
-            product = form.formatResult(self.config['site'], title, price, link)
+            img_link = res.select(self.config['img_indicator'])
+
+            product = form.formatResult(self.config['site'], title, price, link, img_link)
+
             if product['title'] != '' and product['price'] != '' and product['link'] != '':
                 products.append(product)
         self.result = products
@@ -84,11 +90,12 @@ class search(Thread):
         }
         s = requests.Session()
         page = s.get(URL, headers=headers)
+        print(f'Page - {URL}. status code {page.status_code}')
         if page.status_code == 200:
             soup1 = BeautifulSoup(page.content, 'html.parser')
             return BeautifulSoup(soup1.prettify(), 'html.parser')
         else:
-            # TODO add logger
+            print(f'Page - {URL} does not exist with status code {page.status_code}')
             return None
 
 
@@ -128,7 +135,6 @@ def scrape(args, scrapers):
             if i == len(scrapers):
                 break
         if scrapers[i] == 'bestbuy':
-            print("Bestbuy")
             t_bb = search(query, BESTBUY)
             t_bb.start()
             i += 1
