@@ -72,6 +72,15 @@ if st.button('Search') and product and website:
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
         st.dataframe(dataframe.style.apply(highlight_row, axis=None))
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Visit the Website</h1>", unsafe_allow_html=True)
+
+        csv = convert_df_to_csv(dataframe)
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='output.csv',
+            mime='text/csv',
+        )
+        
         min_value = min(price)
         min_idx = [i for i, x in enumerate(price) if x == min_value]
         for minimum_i in min_idx:
