@@ -84,8 +84,8 @@ if st.button('Search') and product and website:
         
 
 
-# Add footer to UI
-footer="""<style>
+# Footer
+footer = """<style>
 a:link , a:visited{
 color: blue;
 background-color: transparent;
@@ -109,10 +109,11 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash" target="_blank">slash</a></p>
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/sathiya06/slash-phase3" target="_blank">slash</a></p>
 <p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Rohan Shah</a></p>
-<p>Contributors: Anshul, Bhavya, Darshan, Pragna, Rohan</p>
+<p>Contributors: Aadithya, Dhiraj, Sathya, Sharat</p>
 </div>
 """
-st.markdown(footer,unsafe_allow_html=True)
+# st.markdown(footer, unsafe_allow_html=True)
+
 
