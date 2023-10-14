@@ -14,9 +14,15 @@ from src.url_shortener import shorten_url
 import pandas as pd
 #from link_button import link_button
 
+def ensure_https_link(link_text):
+    if link_text.startswith("http://") or link_text.startswith("https://"):
+        return link_text
+    else:
+        return "https://" + link_text
+        
 def path_to_image_html(path):
     return '<img src="' + path + '" width="60" >'
-    
+
 def path_to_url_html(path):
     return '<a href="'+ ensure_https_link(path) +'" target="_blank">Product Link</a>'
 
