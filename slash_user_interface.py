@@ -14,6 +14,11 @@ from src.url_shortener import shorten_url
 import pandas as pd
 #from link_button import link_button
 
+@st.cache
+def convert_df_to_html(input_df):
+     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+     return input_df.to_html(escape=False, formatters=dict(Image=path_to_image_html,Link=path_to_url_html))
+
 
 # Load external CSS for styling
 with open('assets/style.css') as f:
@@ -70,8 +75,14 @@ if st.button('Search') and product and website:
         dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url, 'Website':site})
         st.balloons()
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
-        st.dataframe(dataframe.style.apply(highlight_row, axis=None))
-        st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Visit the Website</h1>", unsafe_allow_html=True)
+
+        html = "<div class='table-container'>"
+        html += convert_df_to_html(dataframe)
+        st.markdown(
+            html,
+            unsafe_allow_html=True
+        )
+        html += '</div>'
 
         csv = convert_df_to_csv(dataframe)
         st.download_button(
@@ -80,7 +91,9 @@ if st.button('Search') and product and website:
             file_name='output.csv',
             mime='text/csv',
         )
-        
+
+        st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Visit the Website</h1>", unsafe_allow_html=True)
+
         min_value = min(price)
         min_idx = [i for i, x in enumerate(price) if x == min_value]
         for minimum_i in min_idx:
