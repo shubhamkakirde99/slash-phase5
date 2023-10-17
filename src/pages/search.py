@@ -63,7 +63,7 @@ def render_search():
     # Input Controls
     with col1:
         product = st.text_input('Enter the product item name')
-        currency = st.s('Enter the currency item name')
+        # currency = st.selectbox('Enter the currency item name')
 
     with col2:
         website = st.selectbox('Select the website', ('Walmart', 'Ebay', 'BestBuy', 'Target', 'All'))
@@ -109,7 +109,6 @@ def render_search():
                 df.loc[~mask, :] = 'background-color: ""'
                 return df
             dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
-            print(dataframe)
             st.balloons()
             st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
 

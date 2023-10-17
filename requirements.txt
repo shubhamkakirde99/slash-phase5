@@ -19,3 +19,4 @@ typing-extensions==3.10.0.2
 urllib3==1.26.7
 pandas==2.1.0
 protobuf==3.20.1
+currencyconverter==0.17.11

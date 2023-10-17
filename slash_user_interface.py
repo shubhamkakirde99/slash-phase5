@@ -14,7 +14,6 @@ class UIManager:
 
     def render(self):
         st.sidebar.markdown("## Main Menu")
-        print(self.pages)
         page = st.sidebar.selectbox(
             "Select Page", self.pages, format_func=lambda page: page["title"]
         )
