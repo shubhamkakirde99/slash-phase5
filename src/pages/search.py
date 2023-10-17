@@ -61,15 +61,15 @@ def render_search():
     col1, col2,col3 = st.columns(3)
 
     # Input Controls
-    with col1:
+     with col1:
         product = st.text_input('Enter the product item name')
-        currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
 
     with col2:
         website = st.selectbox('Select the website', ('Walmart', 'Ebay', 'BestBuy', 'Target', 'All'))
+        button = st.button('Search')
 
     with col3:
-        button = st.button('Search')
+        currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
 
     website_dict = {
         'Amazon': 'az',
