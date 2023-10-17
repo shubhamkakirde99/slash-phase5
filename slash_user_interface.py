@@ -1,6 +1,8 @@
 from pyclbr import Function
 from src.pages.search import render_search
-from src.pages.wishlist import render_wishlist
+# from src.pages.wishlist import render_wishlist
+from src.pages.login import render_login
+from src.pages.register import render_register
 import streamlit as st
 
 st.set_page_config(page_title="Slash - Product Search", page_icon="🔍")
@@ -23,5 +25,7 @@ class UIManager:
 uiManager = UIManager()
 
 uiManager.addPage("Search", render_search)
-uiManager.addPage("Wishlist", render_wishlist)
+# uiManager.addPage("Wishlist", render_wishlist)
+uiManager.addPage("Login", render_login)
+uiManager.addPage("Register", render_register)
 uiManager.render()
