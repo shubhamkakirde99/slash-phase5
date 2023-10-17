@@ -1,7 +1,14 @@
+"""
+Copyright (c) 2023 Sharat Neppalli
+This code is licensed under MIT license (see LICENSE.MD for details)
+
+@author: Slash
+"""
+
 # importing necessary modules
-from fastapi import Depends, HTTPException, status, APIRouter, Request, Response, Form
+from fastapi import Depends, HTTPException, APIRouter, Request, Response, Form
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from jose import jwt, JWTError
 from datetime import datetime, timedelta
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
@@ -10,7 +17,6 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 import models
 from typing import Optional
-import secrets
 import sys
 sys.path.append("..")
 
@@ -135,7 +141,7 @@ async def get_current_user(request: Request):
         raise HTTPException(status_code=404, detail="Not Found")
 
 
-# login and return the token.
+# creates a token for the user and sets it as a cookie
 @router.post("/token")
 async def login_for_access_token(response: Response, form_data: OAuth2PasswordRequestForm = Depends(),
                                  db: Session = Depends(get_db)):
@@ -149,36 +155,7 @@ async def login_for_access_token(response: Response, form_data: OAuth2PasswordRe
     response.set_cookie(key="access_token", value=token, httponly=True)
     return JSONResponse(content={'message': "Login Successful",'user': user.username, 'id': user.id})
 
-
-@router.get("/", response_class=HTMLResponse)
-async def authentication_page(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
-
-''' login is a function that is used to login the user. It takes in the request and db as parameters.
- It calls the login_for_access_token which creates the access token and sets the cookie.'''
-
-
-@router.post("/", response_class=HTMLResponse)
-async def login(request: Request, db: Session = Depends(get_db)):
-    try:
-        form = LoginForm(request)
-        await form.create_oauth_form()
-        response = RedirectResponse(
-            url="http://localhost:8501", status_code=status.HTTP_302_FOUND)
-
-        validate_user_cookie = await login_for_access_token(response=response, form_data=form, db=db)
-
-        if not validate_user_cookie:
-            msg = "Incorrect username or password"
-            return templates.TemplateResponse("login.html", {"request": request, "msg": msg})
-        return response
-    except HTTPException:
-        msg = "Unkown Error"
-        return templates.TemplateResponse("login.html", {"request": request, "msg": msg})
-
-
 ''' logout is a function that is used to logout the user. It takes in the request as a parameter and deletes the access_token cookie.'''
-
 
 @router.get("/logout")
 async def logout(request: Request):
@@ -200,7 +177,6 @@ It takes in the request, email, username, firstname, lastname, password, verify_
 It validates the username and email to check if they are already taken.
 Validation1 is a variable that is used to check if the username is already taken.
 Validation2 is a variable that is used to check if the email is already taken.
-If the password and verify_password do not match, it returns a message that says "Passwords do not match".
 If the username is already taken, it returns a message that says "Username already taken".
 If the email is already taken, it returns a message that says "Email already taken".
 If the username and email are not taken, it creates a new user and returns a message that says "Registration Successful".
@@ -233,5 +209,3 @@ async def register_user(request: Request, email: str = Form(...), username: str 
     db.commit()
 
     return JSONResponse(content={'message': "User successfully created"})
-
-    # return RedirectResponse(url="http://localhost:8501", status_code=status.HTTP_302_FOUND)

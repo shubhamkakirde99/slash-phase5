@@ -58,7 +58,7 @@ def render_search():
     st.image("assets/slash.png")
 
     # Create a two-column layout
-    col1, col2,col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
     # Input Controls
      with col1:
