@@ -10,6 +10,7 @@ from pydantic import BaseModel
 
 # local imports
 import src.scraper_mt as scr
+import src.currency_converter as cc
 
 # response type define
 class jsonScraps(BaseModel):
@@ -75,3 +76,7 @@ def search_items_API(
     else:
         # No results
         return None
+    
+def currency_API(new_currency, price_list):
+    return cc.convert(new_currency, price_list)
+
