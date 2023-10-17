@@ -3,7 +3,7 @@ import streamlit as st
 import sys
 sys.path.append('../')
 import pandas as pd
-from src.main_streamlit import search_items_API
+from src.main_streamlit import currency_API, search_items_API
 from src.url_shortener import shorten_url
 import re
 
@@ -63,7 +63,7 @@ def render_search():
     # Input Controls
     with col1:
         product = st.text_input('Enter the product item name')
-        # currency = st.selectbox('Enter the currency item name')
+        currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
 
     with col2:
         website = st.selectbox('Select the website', ('Walmart', 'Ebay', 'BestBuy', 'Target', 'All'))
@@ -82,7 +82,7 @@ def render_search():
     }
 
     # Search button
-    if button and product and website:
+    if button and product and website and currency:
         results = search_items_API(website_dict[website], product)
         # Use st.columns based on return values
         description = []
@@ -100,14 +100,15 @@ def render_search():
                     price.append(extract_and_format_numbers(result['price']))
                     image_url.append(result['img_link'])
         if len(price):
-
-            def highlight_row(dataframe):
-                df = dataframe.copy()
-                minimumPrice = df['Price'].min()
-                mask = df['Price'] == minimumPrice
-                df.loc[mask, :] = 'background-color: lightgreen'
-                df.loc[~mask, :] = 'background-color: ""'
-                return df
+            # def highlight_row(dataframe):
+            #     df = dataframe.copy()
+            #     minimumPrice = df['Price'].min()
+            #     mask = df['Price'] == minimumPrice
+            #     df.loc[mask, :] = 'background-color: lightgreen'
+            #     df.loc[~mask, :] = 'background-color: ""'
+            #     return df
+            if(currency != "USD($)"):
+                price = currency_API(currency, price)
             dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
             st.balloons()
             st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
