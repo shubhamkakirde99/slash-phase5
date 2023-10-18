@@ -35,8 +35,9 @@ def render_login():
                         f"{API_URL}/token",
                         data={"username": username, "password": password}
                     )
-                    if response.json():
-                        token = response.json()['user']
+                    if response.json().get("user"):
+                        token = response.json().get("user")
+                        cookie = response.cookies.get("access_token")
                         st.write(f"You are now logged in {token}")
                     else:
                         st.error("Login failed. Please check your credentials.")

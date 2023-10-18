@@ -143,7 +143,7 @@ async def get_current_user(request: Request):
 
 # creates a token for the user and sets it as a cookie
 @router.post("/token")
-async def login_for_access_token(response: Response, form_data: OAuth2PasswordRequestForm = Depends(),
+async def login_for_access_token(request: Request, form_data: OAuth2PasswordRequestForm = Depends(),
                                  db: Session = Depends(get_db)):
     user = authenticate_user(form_data.username, form_data.password, db)
     if not user:
@@ -152,24 +152,16 @@ async def login_for_access_token(response: Response, form_data: OAuth2PasswordRe
     token = create_access_token(user.username,
                                 user.id,
                                 expires_delta=token_expires)
+    response = JSONResponse(content={'message': "Login Successful",'user': user.username, 'id': user.id})
     response.set_cookie(key="access_token", value=token, httponly=True)
-    return JSONResponse(content={'message': "Login Successful",'user': user.username, 'id': user.id})
+    return response
 
 ''' logout is a function that is used to logout the user. It takes in the request as a parameter and deletes the access_token cookie.'''
 
 @router.get("/logout")
 async def logout(request: Request):
-    msg = "Logout Successful"
-    response = templates.TemplateResponse(
-        "login.html", {"request": request, "msg": msg})
-    response.delete_cookie(key="access_token")
+    response= request.delete_cookie(key="access_token")
     return response
-
-
-@router.get("/register", response_class=HTMLResponse)
-async def register(request: Request):
-    print("Received a registration request")
-    return templates.TemplateResponse("register.html", {"request": request})
 
 
 ''' register_user is a function that is used to register the user. 

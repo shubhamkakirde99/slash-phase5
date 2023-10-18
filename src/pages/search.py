@@ -61,7 +61,7 @@ def render_search():
     col1, col2, col3 = st.columns(3)
 
     # Input Controls
-     with col1:
+    with col1:
         product = st.text_input('Enter the product item name')
 
     with col2:
