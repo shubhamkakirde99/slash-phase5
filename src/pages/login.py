@@ -21,10 +21,13 @@ def render_login():
         """, unsafe_allow_html=True)
 
     # variable to store the user id when logged in
-    token = None
+    token = st.session_state.get('token', None)
     API_URL = "http://127.0.0.1:5050/auth"
 
+    placeholder = st.empty()
     if not token:
+        placeholder.empty()
+        with placeholder.container():
             st.header("Login")
             username = st.text_input("Username")
             password = st.text_input("Password", type="password")
@@ -38,25 +41,24 @@ def render_login():
                     if response.json().get("user"):
                         token = response.json().get("user")
                         cookie = response.cookies.get("access_token")
+                        st.session_state.token = token
                         st.write(f"You are now logged in {token}")
+                        st.experimental_rerun()
                     else:
                         st.error("Login failed. Please check your credentials.")
                 else:
                     st.warning("Please enter both username and password.")
-
+    # User is logged in
     if token:
-        # User is logged in
-        if st.button("View Wishlist"):
-            # render_wishlist()
-            pass
-        if st.button("Logout"):
-            response = requests.get(f"{API_URL}/logout")
-            token = None
-            st.success("Logged out successfully.")
-            st.markdown("""
-                        <script>
-                        window.location.reload();
-                        </script>
-                        """,
-                        unsafe_allow_html=True
-                        )
+        placeholder.empty()
+        with placeholder.container():
+            if st.button("View Wishlist"):
+                # render_wishlist()
+                pass
+            if st.button("Logout"):
+                response = requests.get(f"{API_URL}/logout")
+                del st.session_state['token']
+                token =None
+                st.success("Logged out successfully.")
+                st.experimental_rerun()
+

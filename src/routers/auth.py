@@ -160,7 +160,9 @@ async def login_for_access_token(request: Request, form_data: OAuth2PasswordRequ
 
 @router.get("/logout")
 async def logout(request: Request):
-    response= request.delete_cookie(key="access_token")
+    # response= request.delete_cookie(key="access_token")
+    response = Response()
+    response.delete_cookie(key="access_token")
     return response
 
 
