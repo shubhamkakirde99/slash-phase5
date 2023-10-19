@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Install Python 3.7.12
+    - name: Install Python 3.10.13
       uses: actions/setup-python@v1
       with:
         python-version: 3.7.12
@@ -30,7 +30,7 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODE_COV_SEC }}
+        token: ${{ secrets.CODECOV_TOKEN}}
 
 
 # This workflow will install Python dependencies, run tests and create a Code Coverage Report
