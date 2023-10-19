@@ -19,6 +19,7 @@ import nest_asyncio
 import models
 from database import engine
 from routers import auth
+from routers import wish_list
 
 import sys
 path_root = Path(__file__).parents[1]
