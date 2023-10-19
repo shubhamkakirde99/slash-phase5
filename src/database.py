@@ -13,7 +13,9 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 # postgres connection
-SQLALCHEMY_DATABASE_URL = "postgresql://userdb:12345@localhost/postgres"
+username = 'postgres'
+password = 'pass'
+SQLALCHEMY_DATABASE_URL = "postgresql://"+username+":"+password+"@localhost/postgres"
 # SQLALCHEMY_DATABASE_URL = os.getenv("DB_URL")
 
 engine = create_engine(
