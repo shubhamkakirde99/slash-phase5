@@ -58,7 +58,7 @@ async def add_to_wishlist(request: Request, product_info: str = Form(...), db: S
     product.product = product_info
     db.add(product)
     db.commit()
-    return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
+    return True
 
 # Delete from the wishlist of a user
 @router.delete("/{product_id}")

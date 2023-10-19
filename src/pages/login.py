@@ -51,18 +51,4 @@ def render_login():
                 else:
                     st.warning("Please enter both username and password.")
 
-    # User is logged in
-    if st.session_state.token:
-        placeholder.empty()
-        with placeholder.container():
-
-            if st.button("View Wishlist"):
-                render_wishlist()
-
-            if st.button("Logout"):
-                response = requests.get(f"{API_URL}/logout", cookies={"access_token": st.session_state.cookie})
-                del st.session_state['token']
-                del st.session_state['cookie']
-                st.success("Logged out successfully.")
-                st.rerun()
 

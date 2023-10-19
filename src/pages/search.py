@@ -22,8 +22,6 @@ def extract_and_format_numbers(input_string):
     else:
         return "No valid numbers found in the input."
 
-
-
 def ensure_https_link(link_text):
     if link_text.startswith("http://") or link_text.startswith("https://"):
         return link_text
@@ -36,18 +34,25 @@ def path_to_image_html(path):
 def path_to_url_html(path):
     return '<a href="'+ ensure_https_link(path) +'" target="_blank">Product Link</a>'
 
-@st.cache
+@st.cache_data
 def convert_df_to_html(input_df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
      return input_df.to_html(escape=False, formatters=dict(Image=path_to_image_html,Link=path_to_url_html))
 
-@st.cache
+@st.cache_data
 def convert_df_to_csv(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
 
 def render_search():
+    def callback():
+        st.session_state.button_clicked = True 
+
+    if "button_clicked" not in st.session_state:
+        st.session_state.button_clicked = False
+
     API_URL = "http://127.0.0.1:5050"
+    
     # Load external CSS for styling
     with open('assets/style.css') as f:
         st.markdown(f"""
@@ -68,7 +73,7 @@ def render_search():
 
     with col2:
         website = st.selectbox('Select the website', ('Walmart', 'Ebay', 'BestBuy', 'Target', 'All'))
-        button = st.button('Search')
+        button = st.button('Search', on_click=callback)
 
     with col3:
         currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
@@ -83,10 +88,11 @@ def render_search():
         'All': 'all'
     }
 
-    price = []
+    add = False
     # Search button
-    if button and product and website and currency:
+    if (button or st.session_state.button_clicked ) and product and website and currency:
         results = search_items_API(website_dict[website], product)
+        add = True
         # Use st.columns based on return values
         description = []
         url = []
@@ -137,28 +143,34 @@ def render_search():
             min_idx = [i for i, x in enumerate(price) if x == min_value]
             for minimum_i in min_idx:
                 link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
-                st.write("Cheapest Product [link](" + link_button_url + ")")
-            response = requests.post(
-                f"{API_URL}/wishlist",
-                data={"product_info": dataframe.iloc[2].to_json()},
-                cookies={"access_token": st.session_state.cookie}
-            )
-            if response.status_code == 200:
-                st.write("Added successfully")
-            product_index = st.text_input('Add To Wish List')
-            wishlist_button = st.button('Add')
-            if wishlist_button:
-                response = requests.post(
-                    f"{API_URL}/wishlist",
-                    data={"product_info": dataframe.iloc[str(product_index)].to_json()}
-                )
-
-                if response.status_code == 200:
-                    st.write("Added successfully")
+            
+            st.write("Cheapest Product [link](" + link_button_url + ")")
 
         else:
             st.error('Sorry, the website does not have similar products')
+    
+    if (button or st.session_state.button_clicked ) and add:
+        st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
 
+        # Display the product list and add-to-wishlist form
+        product_index = st.text_input('Add To Wish List')
+        with st.form(key='wishlist_form'):
+            if st.form_submit_button('Add'):
+                if product_index:
+                    try:
+                        product_index = int(product_index)
+                        if 0 <= product_index < len(dataframe):
+                            response = requests.post(
+                                f"{API_URL}/wishlist",
+                                data={"product_info": dataframe.iloc[product_index].to_json()},
+                                cookies={"access_token": st.session_state.cookie}
+                            )
+                            if response:
+                                st.write("Added successfully to the wishlist")
+                        else:
+                            st.error("Invalid product index")
+                    except ValueError:
+                        st.error("Invalid product index")
 
         # Footer
         footer = """<style>

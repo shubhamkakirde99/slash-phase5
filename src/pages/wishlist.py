@@ -24,8 +24,6 @@ def extract_and_format_numbers(input_string):
     else:
         return "No valid numbers found in the input."
 
-
-
 def ensure_https_link(link_text):
     if link_text.startswith("http://") or link_text.startswith("https://"):
         return link_text
@@ -38,7 +36,7 @@ def path_to_image_html(path):
 def path_to_url_html(path):
     return '<a href="'+ ensure_https_link(path) +'" target="_blank">Product Link</a>'
 
-@st.cache
+@st.cache_data
 def convert_df_to_html(input_df):
      # IMPORTANT: Cache the conversion to prevent computation on every rerun
      return input_df.to_html(escape=False, formatters=dict(Image=path_to_image_html,Link=path_to_url_html))
@@ -88,7 +86,6 @@ def render_wishlist():
         unsafe_allow_html=True
     )
     html += '</div>'
-    
 
     product_index = st.text_input('Delete From Wish List')
     wishlist_button = st.button('Delete')
@@ -100,4 +97,5 @@ def render_wishlist():
 
         if response.status_code == 200:
             st.write("Removed successfully")
+            st.rerun()
     

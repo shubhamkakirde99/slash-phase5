@@ -1,11 +1,15 @@
 from pyclbr import Function
 from src.pages.search import render_search
-# from src.pages.wishlist import render_wishlist
+from src.pages.wishlist import render_wishlist
 from src.pages.login import render_login
 from src.pages.register import render_register
+from src.pages.logout import render_logout
+
 import streamlit as st
 
 st.set_page_config(page_title="Slash - Product Search", page_icon="🔍")
+st.title("Slash - Product Search")
+st.session_state.token = st.session_state.get("token", None)
 
 class UIManager:
     def __init__(self):
@@ -25,7 +29,10 @@ class UIManager:
 uiManager = UIManager()
 
 uiManager.addPage("Search", render_search)
-# uiManager.addPage("Wishlist", render_wishlist)
-uiManager.addPage("Login", render_login)
-uiManager.addPage("Register", render_register)
+if st.session_state.token:
+    uiManager.addPage("Wishlist", render_wishlist)
+    uiManager.addPage("logout", render_logout)
+else:
+    uiManager.addPage("Login", render_login)
+    uiManager.addPage("Register", render_register)
 uiManager.render()
