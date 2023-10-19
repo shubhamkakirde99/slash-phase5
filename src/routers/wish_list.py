@@ -14,7 +14,6 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from database import engine
 from sqlalchemy.orm import Session
 import models
-import .auth as Auth
 import sys
 sys.path.append("..")
 
