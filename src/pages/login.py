@@ -7,6 +7,7 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 
 import requests
 import streamlit as st
+from src.pages.wishlist import render_wishlist
 
 def render_login():
 
@@ -52,9 +53,10 @@ def render_login():
     if token:
         placeholder.empty()
         with placeholder.container():
+
             if st.button("View Wishlist"):
-                # render_wishlist()
-                pass
+                render_wishlist()
+
             if st.button("Logout"):
                 response = requests.get(f"{API_URL}/logout")
                 del st.session_state['token']
