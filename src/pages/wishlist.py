@@ -49,9 +49,9 @@ def render_wishlist():
 
     # To get all the products wishlisted by the user
     response = requests.get(
-        f"{API_URL}/wishlist"
+        f"{API_URL}/wishlist",
+        cookies={"access_token": st.session_state.cookie}
     )
-
     response_json = response.json()  # This converts the response to a Python dictionary
 
     list = []
@@ -93,9 +93,9 @@ def render_wishlist():
     product_index = st.text_input('Delete From Wish List')
     wishlist_button = st.button('Delete')
     if wishlist_button:
-        print("request sent")
         response = requests.delete(
-            f"{API_URL}/wishlist/{product_index}"
+            f"{API_URL}/wishlist/{product_index}",
+            cookies={"access_token": st.session_state.cookie}
         )
 
         if response.status_code == 200:

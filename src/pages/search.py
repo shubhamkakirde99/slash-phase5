@@ -138,11 +138,16 @@ def render_search():
             for minimum_i in min_idx:
                 link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
                 st.write("Cheapest Product [link](" + link_button_url + ")")
-
+            response = requests.post(
+                f"{API_URL}/wishlist",
+                data={"product_info": dataframe.iloc[2].to_json()},
+                cookies={"access_token": st.session_state.cookie}
+            )
+            if response.status_code == 200:
+                st.write("Added successfully")
             product_index = st.text_input('Add To Wish List')
             wishlist_button = st.button('Add')
             if wishlist_button:
-                print("request sent")
                 response = requests.post(
                     f"{API_URL}/wishlist",
                     data={"product_info": dataframe.iloc[str(product_index)].to_json()}

@@ -31,7 +31,6 @@ models.Base.metadata.create_all(bind=engine)
 # get all the products in the wishlist of a user
 @router.get("/")
 async def get_from_wishlist(request: Request, db: Session = Depends(Auth.get_db)):
-
     user = await Auth.get_current_user(request)
     if user is None:
         return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
@@ -39,7 +38,6 @@ async def get_from_wishlist(request: Request, db: Session = Depends(Auth.get_db)
     list = db.query(models.Products).filter(models.Products.user_id == user.get("id")).all()
     if list is None:
         return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
-    
     json_data = {}
 
     for product in list:
@@ -52,9 +50,7 @@ async def get_from_wishlist(request: Request, db: Session = Depends(Auth.get_db)
 # Add to the wishlist of a user
 @router.post("/")
 async def add_to_wishlist(request: Request, product_info: str = Form(...), db: Session = Depends(Auth.get_db)):
-    print("request received")
     user = await Auth.get_current_user(request)
-    print(user)
     if user is None:
         return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
     product = models.Products()
@@ -62,7 +58,6 @@ async def add_to_wishlist(request: Request, product_info: str = Form(...), db: S
     product.product = product_info
     db.add(product)
     db.commit()
-
     return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
 
 # Delete from the wishlist of a user

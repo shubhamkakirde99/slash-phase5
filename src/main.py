@@ -26,7 +26,7 @@ sys.path.append(str(path_root))
 
 # local imports
 import src.scraper_mt as scr
-
+import src.wish_list as wishlist
 
 nest_asyncio.apply()
 
@@ -44,7 +44,7 @@ app = FastAPI(title="Slash", description="Slash using FastAPI", version="1.0.0")
 models.Base.metadata.create_all(bind=engine)
 
 app.include_router(auth.router)
-
+app.include_router(wishlist.router)
 
 @app.get("/")
 async def read_root():

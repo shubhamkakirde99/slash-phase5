@@ -125,7 +125,6 @@ def create_access_token(username: str, user_id: int,
 
 '''get_current_user is a function that is used to get the current user.'''
 
-
 async def get_current_user(request: Request):
     try:
         token = request.cookies.get("access_token")
@@ -137,6 +136,7 @@ async def get_current_user(request: Request):
         if username is None or user_id is None:
             logout(request)
         return {"username": username, "id": user_id}
+    
     except JWTError:
         raise HTTPException(status_code=404, detail="Not Found")
 
