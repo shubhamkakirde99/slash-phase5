@@ -6,6 +6,7 @@ import pandas as pd
 from src.main_streamlit import currency_API, search_items_API
 from src.url_shortener import shorten_url
 import re
+import requests
 
 def extract_and_format_numbers(input_string):
     # Use regular expressions to find all numbers in the input string
@@ -28,7 +29,7 @@ def ensure_https_link(link_text):
         return link_text
     else:
         return "https://" + link_text
-        
+    
 def path_to_image_html(path):
     return '<img src="' + path + '" width="60" >'
 
@@ -46,6 +47,7 @@ def convert_df_to_csv(df):
     return df.to_csv().encode('utf-8')
 
 def render_search():
+    API_URL = "http://127.0.0.1:5050"
     # Load external CSS for styling
     with open('assets/style.css') as f:
         st.markdown(f"""
@@ -57,7 +59,7 @@ def render_search():
     # Display Image
     st.image("assets/slash.png")
 
-    # Create a two-column layout
+    # Create a three-column layout
     col1, col2, col3 = st.columns(3)
 
     # Input Controls
@@ -81,6 +83,7 @@ def render_search():
         'All': 'all'
     }
 
+    price = []
     # Search button
     if button and product and website and currency:
         results = search_items_API(website_dict[website], product)
@@ -99,6 +102,7 @@ def render_search():
                     site.append(result['website'])
                     price.append(extract_and_format_numbers(result['price']))
                     image_url.append(result['img_link'])
+
         if len(price):
             # def highlight_row(dataframe):
             #     df = dataframe.copy()
@@ -134,6 +138,19 @@ def render_search():
             for minimum_i in min_idx:
                 link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
                 st.write("Cheapest Product [link](" + link_button_url + ")")
+
+            product_index = st.text_input('Add To Wish List')
+            wishlist_button = st.button('Add')
+            if wishlist_button:
+                print("request sent")
+                response = requests.post(
+                    f"{API_URL}/wishlist",
+                    data={"product_info": dataframe.iloc[str(product_index)].to_json()}
+                )
+
+                if response.status_code == 200:
+                    st.write("Added successfully")
+
         else:
             st.error('Sorry, the website does not have similar products')
 
