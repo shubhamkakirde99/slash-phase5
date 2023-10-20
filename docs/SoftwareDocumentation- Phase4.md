@@ -1,4 +1,5 @@
-# SLASH PHASE 4
+![image](https://github.com/SE23-Team44/slash-phase4/assets/56881419/6b173492-99f0-4e2d-8813-143bb9c1889f)
+## SLASH PHASE 4
 
 ## Motivation:
 Slash was envisioned as a console application which was meant to be used as a standalone native Python desktop application. Even though a native application is good in usecases such as heavy processing and zero downtime but in the bigger picture, it fades in comparison to an online web application. Our efforts in phase-II were to convert a native desktop Python application to a web application(APIs) and expand the horizon by bringing in more e-commerce websites support as well as support for API calls to sites that don't support scraping. Our vision is to provide a one-stop abstraction for all web scraping needs which is packaged in a sleek and easy to implement cloud pipeline. Integrating CI/CD to our API was crucial to our goal as we believe the next phase should not dwell in the past but rather focus on the future. 
@@ -13,7 +14,7 @@ Slash is a publicly accessible web API framework that allows one to scrape the m
 1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then ```cd``` into the local repository.
 ```
 git clone https://github.com/SE23-Team44/slash-phase4
-cd slash
+cd src
 ```
 2. This project uses Python 3, so make sure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All requirements of the project are listed in the ```requirements.txt``` file. Use pip to install all of those.
 ```
@@ -37,12 +38,15 @@ streamlit run slash_user_interface.py
 ## Technology Used
 ---
 - Streamlit [https://streamlit.io/]
+- Python
 - Fast API
 - Postgre SQL
-
 
 ## Output
 
 The below images shows the websites developed for Slash Phase 3
+<img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/home.png'>
+<img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/login.png'>
+<img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/register.png'>
 <img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/search.png'>
 <img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/wishlist.png'>

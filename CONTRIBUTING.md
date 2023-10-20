@@ -52,7 +52,7 @@ The following is a set of guidelines for contributing to "Slash" and its package
     test.py
 
 ## Code of Conduct
-This project and everyone participating in it is governed by the [Code of Conduct](https://github.com/SE23-Team44/slash-phase4/blob/main/Code_Of_Conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to anshulp2912@gmail.com.
+This project and everyone participating in it is governed by the [Code of Conduct](https://github.com/SE23-Team44/slash-phase4/blob/main/Code_Of_Conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to dhj165@hotmail.com, sarathn08@gmail.com.
 
 ## How can I Contribute
 ### Reporting Bugs 
