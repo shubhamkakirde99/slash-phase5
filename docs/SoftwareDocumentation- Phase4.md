@@ -1,4 +1,4 @@
-# SLASH PHASE 3
+# SLASH PHASE 4
 
 ## Motivation:
 Slash was envisioned as a console application which was meant to be used as a standalone native Python desktop application. Even though a native application is good in usecases such as heavy processing and zero downtime but in the bigger picture, it fades in comparison to an online web application. Our efforts in phase-II were to convert a native desktop Python application to a web application(APIs) and expand the horizon by bringing in more e-commerce websites support as well as support for API calls to sites that don't support scraping. Our vision is to provide a one-stop abstraction for all web scraping needs which is packaged in a sleek and easy to implement cloud pipeline. Integrating CI/CD to our API was crucial to our goal as we believe the next phase should not dwell in the past but rather focus on the future. 
@@ -44,5 +44,5 @@ streamlit run slash_user_interface.py
 ## Output
 
 The below images shows the websites developed for Slash Phase 3
-<img src = 'https://github.com/rohan22shah/slash-phase3/blob/main/media/Website_1.png'>
-<img src = 'https://github.com/rohan22shah/slash-phase3/blob/main/media/Website_2.png'>
+<img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/search.png'>
+<img src = 'https://github.com/SE23-Team44/slash-phase4/blob/main/assets/wishlist.png'>
