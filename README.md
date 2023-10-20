@@ -1,6 +1,6 @@
 <p align="center"><img width="500" src="./assets/slash.png"></p>
 
-<a href="https://doi.org/10.5281/zenodo.5758396"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5758396.svg" alt="DOI"></a>
+<a href="https://zenodo.org/doi/10.5281/zenodo.10023643"><img src="https://zenodo.org/badge/702291989.svg" alt="DOI"></a>
 [![codecov](https://codecov.io/gh/SE23-Team44/slash-phase4/branch/main/graph/badge.svg?token=9YO9QKQZPJ)](https://codecov.io/gh/SE23-Team44/slash-phase4)
 [![Build Status](https://app.travis-ci.com/rohan22shah/slash-phase3.svg?branch=main)](https://app.travis-ci.com/rohan22shah/slash-phase3)
 [![Python Style Checker](https://github.com/SE23-Team44/slash-phase4/actions/workflows/style_checker.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/style_checker.yml)
