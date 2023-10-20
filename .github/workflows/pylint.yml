@@ -21,7 +21,7 @@
 #     - name: Analysing the code with pylint
 #       run: |
 #         pylint $(git ls-files '*.py')
-- name: GitHub Action for pylint
+- name: Pylint
   on: [push]
   uses: cclauss/GitHub-Action-for-pylint@0.7.0
             
