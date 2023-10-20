@@ -78,9 +78,7 @@ git clone https://github.com/SE23-Team44/slash-phase4.git
 ```
 pip3 install -r requirements.txt
 ```
-3. ## Setting up PostgreSQL for the Project
-
-To run this project, you must install PostgreSQL on your system. If you haven't already installed it, you can download the latest version of PostgreSQL from the official website: [PostgreSQL Downloads](https://www.postgresql.org/download/).
+3. To run this project, you must install PostgreSQL on your system. If you haven't already installed it, you can download the latest version of PostgreSQL from the official website: [PostgreSQL Downloads](https://www.postgresql.org/download/).
 
 ### Configuring Database Connection
 
