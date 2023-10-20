@@ -14,7 +14,7 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from database import engine
 from sqlalchemy.orm import Session
 import models
-import .auth as Auth
+from src.routers.auth import get_current_user, get_db
 import sys
 sys.path.append("..")
 
@@ -30,8 +30,8 @@ models.Base.metadata.create_all(bind=engine)
 
 # get all the products in the wishlist of a user
 @router.get("/")
-async def get_from_wishlist(request: Request, db: Session = Depends(Auth.get_db)):
-    user = await Auth.get_current_user(request)
+async def get_from_wishlist(request: Request, db: Session = Depends(get_db)):
+    user = await get_current_user(request)
     if user is None:
         return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
     
@@ -49,8 +49,8 @@ async def get_from_wishlist(request: Request, db: Session = Depends(Auth.get_db)
 
 # Add to the wishlist of a user
 @router.post("/")
-async def add_to_wishlist(request: Request, product_info: str = Form(...), db: Session = Depends(Auth.get_db)):
-    user = await Auth.get_current_user(request)
+async def add_to_wishlist(request: Request, product_info: str = Form(...), db: Session = Depends(get_db)):
+    user = await get_current_user(request)
     if user is None:
         return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
     product = models.Products()
@@ -62,8 +62,8 @@ async def add_to_wishlist(request: Request, product_info: str = Form(...), db: S
 
 # Delete from the wishlist of a user
 @router.delete("/{product_id}")
-async def delete_from_wishlist(request: Request,product_id: int, db: Session = Depends(Auth.get_db)):
-    user = await Auth.get_current_user(request)
+async def delete_from_wishlist(request: Request,product_id: int, db: Session = Depends(get_db)):
+    user = await get_current_user(request)
     if user is None:
         return RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
 

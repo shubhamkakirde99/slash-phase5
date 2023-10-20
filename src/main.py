@@ -19,16 +19,15 @@ import nest_asyncio
 import models
 from database import engine
 from routers import auth
-from routers import wish_list
+from routers import wish_list as wishlist
+import src.scraper_mt as scr
+
 
 import sys
 path_root = Path(__file__).parents[1]
 sys.path.append(str(path_root))
 
 # local imports
-import src.scraper_mt as scr
-import src.wish_list as wishlist
-
 nest_asyncio.apply()
 
 # response type define
