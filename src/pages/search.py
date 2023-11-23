@@ -99,6 +99,11 @@ def render_search():
         price = []
         site = []
         image_url = []
+        
+        for result in results:
+            result['price'] = extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1)
+
+        results.sort(key=lambda x: (float(x['price'])))        
 
         if results:
             for result in results:
