@@ -62,7 +62,7 @@ def render_search():
         """, unsafe_allow_html=True)
 
     # Display Image
-    st.image("assets/slash.png")
+    # st.image("assets/slash.png")
 
     # Create a three-column layout
     col1, col2, col3 = st.columns(3)

@@ -145,4 +145,30 @@ html {
   }
 }
 
+.float-box {
+  margin: auto;
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transform: perspective(100px) rotateY(10deg);
+}
+.float {
+  animation: floating 2s linear infinite;
+  margin: 3.5rem auto;
+  padding: 1rem;
+  background: #5a9bad;
+  color: #ffffff;
+  box-shadow: -20px -17px 8px 0px #5a9bad63;
+}
+@keyframes floating {
+  0% {
+    transform: translate(0%, 30%);
+  }
+  50% {
+    transform: translate(0%, -30%);
+  }
+  100% {
+    transform: translate(0%, 30%);
+  }
+}
+
 /*  */
