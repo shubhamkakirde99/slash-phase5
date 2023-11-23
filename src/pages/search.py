@@ -128,6 +128,13 @@ def render_search():
             st.balloons()
             st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
 
+            # min_value = min(price)
+            # min_idx = [i for i, x in enumerate(price) if x == min_value]
+            # for minimum_i in min_idx:
+            #     link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
+            
+            st.write("[Cheapest product link](" + shorten_url(results[0]['link'].split('\\')[-1]) + ")")
+
             html = "<div class='table-container'>"
             html += convert_df_to_html(dataframe)
             st.markdown(
@@ -142,14 +149,6 @@ def render_search():
                 file_name='output.csv',
                 mime='text/csv',
             )
-
-            st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Visit the Website</h1>", unsafe_allow_html=True)
-            min_value = min(price)
-            min_idx = [i for i, x in enumerate(price) if x == min_value]
-            for minimum_i in min_idx:
-                link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
-            
-            st.write("Cheapest Product [link](" + link_button_url + ")")
 
         else:
             st.error('Sorry, the website does not have similar products')
