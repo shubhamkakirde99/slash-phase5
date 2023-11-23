@@ -126,7 +126,7 @@ def render_search():
                 price = currency_API(currency, price)
             dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
             st.balloons()
-            st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
+            st.markdown("<div class='neon'><h2>RESULTS</h2></div>", unsafe_allow_html=True)
 
             # min_value = min(price)
             # min_idx = [i for i, x in enumerate(price) if x == min_value]
