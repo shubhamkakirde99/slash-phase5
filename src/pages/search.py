@@ -12,7 +12,15 @@ def extract_and_format_numbers(input_string):
     # Use regular expressions to find all numbers in the input string
     numbers = re.findall(r'\d+\.\d+|\d+', input_string)
 
-    if len(numbers) >= 2:
+    if len(numbers) == 4:
+        # Place dots between numbers
+        formatted_output = '$'+ numbers[0] + '.' + numbers[1]+'.'+numbers[2]+'.'+numbers[3]
+        return formatted_output
+    elif len(numbers) == 3:
+        # Place dots between numbers
+        formatted_output = '$'+ numbers[0] + '.' + numbers[1]+'.'+numbers[2]
+        return formatted_output
+    elif len(numbers) == 2:
         # Take the first number and add a decimal point before the second number
         formatted_output = '$'+ numbers[0] + '.' + numbers[1]
         return formatted_output
