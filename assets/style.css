@@ -6,6 +6,14 @@ footer {
   text-align: center; /* Center the content horizontally */
 }
 
+.table-container thead {
+  color: white;
+  background: orange;
+}
+
+.table-container tbody tr:nth-child(1) {
+  background: lightgreen;
+}
 /* .css-1v0mbdj.etr89bj1 {
     max-width: 100%; /* Ensure the picture doesn't exceed its container */
 /* border-radius: 10px; Add rounded corners to the picture */

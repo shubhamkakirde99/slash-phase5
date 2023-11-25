@@ -134,6 +134,7 @@ def render_search():
             #     link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
             
             st.write("[Cheapest product link](" + shorten_url(results[0]['link'].split('\\')[-1]) + ")")
+            st.write("Items are displayed in the increasing order of their prices")
 
             html = "<div class='table-container'>"
             html += convert_df_to_html(dataframe)
