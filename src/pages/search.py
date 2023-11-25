@@ -101,7 +101,7 @@ def render_search():
         image_url = []
         
         for result in results:
-            result['price'] = extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1)
+            result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
 
         results.sort(key=lambda x: (float(x['price'])))        
 
