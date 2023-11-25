@@ -85,6 +85,8 @@ def render_search():
 
     with col3:
         currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
+        Min_price = st.number_input('Minimum price', min_value=0, value=0)
+        Max_price = st.number_input('Maximum price', min_value=0, value=10000)
 
     website_dict = {
         # 'Amazon': 'az',
@@ -115,7 +117,7 @@ def render_search():
 
         if results:
             for result in results:
-                if result != {} and result['price'] != '':
+                if result != {} and result['price'] != '' and float(result['price'])>=Min_price and float(result['price'])<=Max_price:
                     description.append(result['title'])
                     url.append(result['link'])
                     site.append(result['website'])
@@ -133,7 +135,7 @@ def render_search():
             if(currency != "USD($)"):
                 price = currency_API(currency, price)
             dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
-            st.success(' Displaying product: \"'+ product +'\" from website: \"'+ website+'\" in currency: \"'+ currency + '\"', icon="✅")
+            st.success(' Displaying \"'+ product +'\" from \"'+ website +'\" with price range - ['+str(Min_price)+', '+str(Max_price)+ ']'+' in \"'+ currency+'\"', icon="✅")
             st.markdown("<div class='neon'><h2>RESULTS</h2></div>", unsafe_allow_html=True)
 
             # min_value = min(price)
