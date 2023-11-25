@@ -79,12 +79,12 @@ def render_search():
         currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
 
     website_dict = {
-        'Amazon': 'az',
+        # 'Amazon': 'az',
         'Walmart': 'wm',
         'Ebay': 'eb',
         'BestBuy': 'bb',
         'Target': 'tg',
-        'Costco': 'cc',
+        # 'Costco': 'cc',
         'All': 'all'
     }
 
@@ -125,7 +125,7 @@ def render_search():
             if(currency != "USD($)"):
                 price = currency_API(currency, price)
             dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
-            st.balloons()
+            st.success(' Displaying product: \"'+ product +'\" from website: \"'+ website+'\" in currency: \"'+ currency + '\"', icon="✅")
             st.markdown("<div class='neon'><h2>RESULTS</h2></div>", unsafe_allow_html=True)
 
             # min_value = min(price)
