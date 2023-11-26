@@ -116,14 +116,14 @@ def render_search():
         url = []
         price = []
         site = []
-        image_url = []
-        
-        for result in results:
-            result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
-
-        results.sort(key=lambda x: (float(x['price'])))        
+        image_url = []        
 
         if results:
+            for result in results:
+                result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
+
+            results.sort(key=lambda x: (float(x['price'])))
+            
             for result in results:
                 if result != {} and result['price'] != '' and float(result['price'])>=Min_price and float(result['price'])<=Max_price:
                     description.append(result['title'])
