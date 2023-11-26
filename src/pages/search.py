@@ -176,6 +176,8 @@ def render_search():
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
 
         # Display the product list and add-to-wishlist form
+        st.write("1. You must first register and then login to start saving wishlist.")
+        st.write("2. Enter the S.No. of the item to add it to the wishlist.")
         product_index = st.text_input('Add To Wish List')
         with st.form(key='wishlist_form'):
             if st.form_submit_button('Add'):
