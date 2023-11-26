@@ -12,15 +12,7 @@ def extract_and_format_numbers(input_string):
     # Use regular expressions to find all numbers in the input string
     numbers = re.findall(r'\d+\.\d+|\d+', input_string)
 
-    if len(numbers) == 4:
-        # Place dots between numbers
-        formatted_output = '$'+ numbers[0] + '.' + numbers[1]+'.'+numbers[2]+'.'+numbers[3]
-        return formatted_output
-    elif len(numbers) == 3:
-        # Place dots between numbers
-        formatted_output = '$'+ numbers[0] + '.' + numbers[1]+'.'+numbers[2]
-        return formatted_output
-    elif len(numbers) == 2:
+    if len(numbers) >= 2:
         # Take the first number and add a decimal point before the second number
         formatted_output = '$'+ numbers[0] + '.' + numbers[1]
         return formatted_output
@@ -51,6 +43,13 @@ def convert_df_to_html(input_df):
 def convert_df_to_csv(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
+
+def try_float(value, default=0):
+    # Try to convert the value to float, return default if unsuccessful
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return default
 
 def render_search():
     def callback():
@@ -85,16 +84,14 @@ def render_search():
 
     with col3:
         currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
-        Min_price = st.number_input('Minimum price', min_value=0, value=0)
-        Max_price = st.number_input('Maximum price', min_value=0, value=10000)
 
     website_dict = {
-        # 'Amazon': 'az',
+        'Amazon': 'az',
         'Walmart': 'wm',
         'Ebay': 'eb',
         'BestBuy': 'bb',
         'Target': 'tg',
-        # 'Costco': 'cc',
+        'Costco': 'cc',
         'All': 'all'
     }
 
@@ -110,14 +107,18 @@ def render_search():
         site = []
         image_url = []
         
-        for result in results:
-            result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
+        if results is not None:
+            for result in results:
+                result['price'] = extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1)
 
-        results.sort(key=lambda x: (float(x['price'])))        
+        if results is not None:
+            results.sort(key=lambda x: try_float(x.get('price'), 0))   
+
+           
 
         if results:
             for result in results:
-                if result != {} and result['price'] != '' and float(result['price'])>=Min_price and float(result['price'])<=Max_price:
+                if result != {} and result['price'] != '':
                     description.append(result['title'])
                     url.append(result['link'])
                     site.append(result['website'])
@@ -135,7 +136,7 @@ def render_search():
             if(currency != "USD($)"):
                 price = currency_API(currency, price)
             dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
-            st.success(' Displaying \"'+ product +'\" from \"'+ website +'\" with price range - ['+str(Min_price)+', '+str(Max_price)+ ']'+' in \"'+ currency+'\"', icon="✅")
+            st.balloons()
             st.markdown("<div class='neon'><h2>RESULTS</h2></div>", unsafe_allow_html=True)
 
             # min_value = min(price)
@@ -144,7 +145,6 @@ def render_search():
             #     link_button_url = shorten_url(url[minimum_i].split('\\')[-1])
             
             st.write("[Cheapest product link](" + shorten_url(results[0]['link'].split('\\')[-1]) + ")")
-            st.write("Items are displayed in the increasing order of their prices")
 
             html = "<div class='table-container'>"
             html += convert_df_to_html(dataframe)
