@@ -174,7 +174,7 @@ Future Roadmap
     <td align="center"><a href="https://github.com/MeryHarikaG"><br/><sub><b>Mery Harika Gaddam</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/kothasrilakshmi"><br /><sub><b>Sri Lakshmi Kotha</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/tbattul"><br/><sub><b>Tanmaiyee Reddy Battula</b></sub></a></td>
-    <td align="center"><a href="https://github.com/kavyajoshi510"><br /><sub><b>Kavya Joshi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/kavyajoshi510"><br /><sub><b>Kavya Lalbahadur Joshi</b></sub></a><br /></td>
 </tr>
 </table>
 
@@ -186,4 +186,4 @@ We would also like to extend our gratitude to previous group : https://github.co
 
 :email: Support
 ---
-For any queries and help, please reach out to us at : mgaddam@ncsu.edu , skotha2@ncsu.edu
+For any queries and help, please reach out to us at : simlyclipse43@gmail.com
