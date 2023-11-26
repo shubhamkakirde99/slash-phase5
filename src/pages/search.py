@@ -72,8 +72,8 @@ def render_search():
     # Display Image
     # st.image("assets/slash.png")
 
-    # Create a three-column layout
-    col1, col2, col3 = st.columns(3)
+    # Create a 2-column layout
+    col1, col2 = st.columns(2)
 
     # Input Controls
     with col1:
@@ -81,12 +81,20 @@ def render_search():
 
     with col2:
         website = st.selectbox('Select the website', ('Walmart', 'Ebay', 'BestBuy', 'Target', 'All'))
-        button = st.button('Search', on_click=callback)
 
-    with col3:
+    # Create a 3-column layout
+    colu1, colu2, colu3 = st.columns(3)
+
+    with colu1:
         currency = st.selectbox('Choose a currency', ('USD($)', 'EUR(€)', 'JPY(¥)', 'INR(₹)', 'GBP(£)', 'AUD($)', 'CAD($)'))
+        
+    with colu2:
         Min_price = st.number_input('Minimum price', min_value=0, value=0)
+        button = st.button('Search', on_click=callback)
+        
+    with colu3:
         Max_price = st.number_input('Maximum price', min_value=0, value=10000)
+        
 
     website_dict = {
         # 'Amazon': 'az',
