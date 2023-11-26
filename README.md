@@ -171,10 +171,10 @@ Future Roadmap
 ---
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/MeryHarikaG"><img src="https://avatars.githubusercontent.com/u/54794049?s=64&v=4" width="75px;" alt=""/><br /><sub><b>Mery Harika Gaddam</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/kothasrilakshmi"><img src="https://avatars.githubusercontent.com/u/56881419?s=64&v=4" width="75px;" alt=""/><br /><sub><b>Sri Lakshmi Kotha</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/tbattul"><img src="https://avatars.githubusercontent.com/u/64639742?v=4" width="75px;" alt=""/><br /><sub><b>Tanmaiyee Reddy Battula</b></sub></a></td>
-    <td align="center"><a href="https://github.com/kavyajoshi510"><img src="https://avatars.githubusercontent.com/u/49028800?s=64&v=4" width="75px;" alt=""/><br /><sub><b>Kavya Joshi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/MeryHarikaG"><br/><sub><b>Mery Harika Gaddam</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/kothasrilakshmi"><br /><sub><b>Sri Lakshmi Kotha</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/tbattul"><br/><sub><b>Tanmaiyee Reddy Battula</b></sub></a></td>
+    <td align="center"><a href="https://github.com/kavyajoshi510"><br /><sub><b>Kavya Joshi</b></sub></a><br /></td>
 </tr>
 </table>
 
