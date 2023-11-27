@@ -1,5 +1,5 @@
 """
-Copyright (c) 2023 Sathiya Narayanan Venkatesan
+Copyright (c) 2023 Mery Harika Gaddam
 This code is licensed under MIT license (see LICENSE.MD for details)
 
 @author: Slash
@@ -9,12 +9,21 @@ import re
 import json
 import requests
 import pandas as pd
+from src.url_shortener import shorten_url
 
 def extract_and_format_numbers(input_string):
     # Use regular expressions to find all numbers in the input string
     numbers = re.findall(r'\d+\.\d+|\d+', input_string)
 
-    if len(numbers) >= 2:
+    if len(numbers) == 4:
+        # Place dots between numbers
+        formatted_output = '$'+ numbers[0] + '.' + numbers[1]+'.'+numbers[2]+'.'+numbers[3]
+        return formatted_output
+    elif len(numbers) == 3:
+        # Place dots between numbers
+        formatted_output = '$'+ numbers[0] + '.' + numbers[1]+'.'+numbers[2]
+        return formatted_output
+    elif len(numbers) == 2:
         # Take the first number and add a decimal point before the second number
         formatted_output = '$'+ numbers[0] + '.' + numbers[1]
         return formatted_output
@@ -49,6 +58,14 @@ def render_wishlist():
 
     API_URL = "http://127.0.0.1:5050"
 
+    # Load external CSS for styling
+    with open('assets/style.css') as f:
+        st.markdown(f"""
+            <style>
+            {f.read()}
+            </style>
+        """, unsafe_allow_html=True)
+
     # To get all the products wishlisted by the user
     # Make sure 'cookie' is available before making the request
     if 'cookie' in st.session_state and st.session_state.cookie:
@@ -75,6 +92,8 @@ def render_wishlist():
     image_url = []
     product_id = []
 
+    list.sort(key=lambda x: (float(x['product_id'])),reverse=True)
+
     for result in list:
         description.append(result['Description'])
         url.append(result['Link'])
@@ -84,8 +103,10 @@ def render_wishlist():
         product_id.append(result['product_id'])
 
     dataframe = pd.DataFrame({'product_id':product_id, 'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
+    st.markdown("<div class='neon'><h2>Wish List</h2></div>", unsafe_allow_html=True)
+    st.write("[Most recently added product link](" + shorten_url(list[0]['Link'].split('\\')[-1]) + ")")
+    st.write("Most recently added item is displayed first")
 
-    st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Wish List</h1>", unsafe_allow_html=True)
 
     html = "<div class='table-container'>"
     html += convert_df_to_html(dataframe)
@@ -95,6 +116,8 @@ def render_wishlist():
     )
     html += '</div>'
 
+    st.write("\n")
+    st.write("Enter the Product.Id. of the item to delete it from the wishlist.")
     product_index = st.text_input('Delete From Wish List')
     wishlist_button = st.button('Delete')
     if wishlist_button:
