@@ -52,6 +52,13 @@ def convert_df_to_csv(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
 
+def try_float(value, default=0):
+    # Try to convert the value to float, return default if unsuccessful
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return default
+
 def render_search():
     def callback():
         st.session_state.button_clicked = True 
@@ -110,10 +117,11 @@ def render_search():
         site = []
         image_url = []
         
-        for result in results:
-            result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
+        if results is not None:
+            for result in results:
+                result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
 
-        results.sort(key=lambda x: (float(x['price'])))        
+        if results is not None: results.sort(key=lambda x: (try_float(x['price'])))        
 
         if results:
             for result in results:
