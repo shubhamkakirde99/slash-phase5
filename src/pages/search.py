@@ -52,13 +52,6 @@ def convert_df_to_csv(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
 
-def try_float(value, default=0):
-    # Try to convert the value to float, return default if unsuccessful
-    try:
-        return float(value)
-    except (ValueError, TypeError):
-        return default
-
 def render_search():
     def callback():
         st.session_state.button_clicked = True 
@@ -132,37 +125,39 @@ def render_search():
                     price.append(extract_and_format_numbers(result['price']))
                     image_url.append(result['img_link'])
 
-            if len(price):
-                if(currency != "USD($)"):
-                    price = currency_API(currency, price)
-                dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
-                st.success(' Displaying \"'+ product +'\" from \"'+ website +'\" with price range - ['+str(Min_price)+', '+str(Max_price)+ ']'+' in \"'+ currency+'\"', icon="✅")
-                st.markdown("<div class='neon'><h2>RESULTS</h2></div>", unsafe_allow_html=True)
+        if len(price):
+            if(currency != "USD($)"):
+                price = currency_API(currency, price)
+            dataframe = pd.DataFrame({'Description': description, 'Price': price, 'Link': url, 'Website': site, 'Image':image_url})
+            st.success(' Displaying \"'+ product +'\" from \"'+ website +'\" with price range - ['+str(Min_price)+', '+str(Max_price)+ ']'+' in \"'+ currency+'\"', icon="✅")
+            st.markdown("<div class='neon'><h2>RESULTS</h2></div>", unsafe_allow_html=True)
 
-                st.write("[Cheapest product link](" + shorten_url(results[0]['link'].split('\\')[-1]) + ")")
-                st.write("Items are displayed in the increasing order of their prices")
+            st.write("[Cheapest product link](" + shorten_url(results[0]['link'].split('\\')[-1]) + ")")
+            st.write("Items are displayed in the increasing order of their prices")
 
-                html = "<div class='table-container'>"
-                html += convert_df_to_html(dataframe)
-                st.markdown(
-                    html,
-                    unsafe_allow_html=True
-                )
-                html += '</div>'
-                csv = convert_df_to_csv(dataframe)
-                st.download_button(
-                    label="Download data as CSV",
-                    data=csv,
-                    file_name='output.csv',
-                    mime='text/csv',
-                )
+            html = "<div class='table-container'>"
+            html += convert_df_to_html(dataframe)
+            st.markdown(
+                html,
+                unsafe_allow_html=True
+            )
+            html += '</div>'
+            csv = convert_df_to_csv(dataframe)
+            st.download_button(
+                label="Download data as CSV",
+                data=csv,
+                file_name='output.csv',
+                mime='text/csv',
+            )
 
-            else:
-                st.error('Sorry, the website does not have similar products')
-
+        else:
+            st.error('Sorry, the website does not have similar products')
+    
     if (button or st.session_state.button_clicked ) and add:
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
 
+        st.write("1. You must first register and then login to start saving wishlist.")
+        st.write("2. Enter the S.No. of the item to add it to the wishlist.")
         product_index = st.text_input('Add To Wish List')
         with st.form(key='wishlist_form'):
             if st.form_submit_button('Add'):
