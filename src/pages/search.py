@@ -184,13 +184,16 @@ def render_search():
                     try:
                         product_index = int(product_index)
                         if 0 <= product_index < len(dataframe):
-                            response = requests.post(
+                            if 'cookie' in st.session_state:
+                                response = requests.post(
                                 f"{API_URL}/wishlist",
                                 data={"product_info": dataframe.iloc[product_index].to_json()},
-                                cookies={"access_token": st.session_state.cookie}
-                            )
-                            if response:
-                                st.write("Added successfully to the wishlist")
+                                cookies={"access_token": st.session_state.cookie})
+                                if response:
+                                    st.write("Added successfully to the wishlist")
+                            else:
+                                st.error("You need to login first")
+                            
                         else:
                             st.error("Invalid product index")
                     except ValueError:
