@@ -3,12 +3,13 @@
 <a href="https://zenodo.org/doi/10.5281/zenodo.10023643"><img src="https://zenodo.org/badge/702291989.svg" alt="DOI"></a>
 [![codecov](https://codecov.io/gh/SE23-Team44/slash-phase4/branch/main/graph/badge.svg?token=9YO9QKQZPJ)](https://codecov.io/gh/SE23-Team44/slash-phase4)
 [![Build Status](https://app.travis-ci.com/rohan22shah/slash-phase3.svg?branch=main)](https://app.travis-ci.com/rohan22shah/slash-phase3)
-[![Python Style Checker](https://github.com/SE23-Team44/slash-phase4/actions/workflows/style_checker.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/style_checker.yml)
-[![Run Tests On Push](https://github.com/SE23-Team44/slash-phase4/actions/workflows/unit_test.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/unit_test.yml)
-[![Python Application](https://github.com/SE23-Team44/slash-phase4/actions/workflows/python-app.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/python-app.yml)
-[![Lint Python](https://github.com/SE23-Team44/slash-phase4/actions/workflows/main.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/main.yml)
-[![Running Code Coverage](https://github.com/SE23-Team44/slash-phase4/actions/workflows/code_cov.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/code_cov.yml)
-[![Close as a feature](https://github.com/SE23-Team44/slash-phase4/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/close_as_a_feature.yml)
+[![Python Style Checker](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/style_checker.yml/badge.svg)](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/style_checker.yml)
+[![Run Tests On Push](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/unit_test.yml/badge.svg)](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/unit_test.yml)
+[![Python Application](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/python-app.yml/badge.svg)](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/python-app.yml)
+[![Lint Python](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/main.yml/badge.svg)](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/main.yml)
+[![Running Code Coverage](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/code_cov.yml/badge.svg)](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/code_cov.yml)
+[![Close as a feature](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/MeryHarikaG/slash-phase5/actions/workflows/close_as_a_feature.yml)
+
 
 <!--Badges-->
 <a href="https://github.com/MeryHarikaG/slash-phase5/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/MeryHarikaG/slash-phase5"></a>
