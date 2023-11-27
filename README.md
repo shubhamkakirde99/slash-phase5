@@ -11,7 +11,7 @@
 [![Close as a feature](https://github.com/SE23-Team44/slash-phase4/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/close_as_a_feature.yml)
 
 <!--Badges-->
-<a href="https://github.com/SE23-Team44/slash-phase4/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/MeryHarikaG/slash-phase5"></a>
+<a href="https://github.com/MeryHarikaG/slash-phase5/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/MeryHarikaG/slash-phase5"></a>
