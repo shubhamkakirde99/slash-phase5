@@ -39,13 +39,6 @@ def ensure_https_link(link_text):
 def path_to_image_html(path):
     return '<img src="' + path + '" width="60" >'
 
-def try_float(value, default=0):
-    # Try to convert the value to float, return default if unsuccessful
-    try:
-        return float(value)
-    except (ValueError, TypeError):
-        return default
-
 def path_to_url_html(path):
     return '<a href="'+ ensure_https_link(path) +'" target="_blank">Product Link</a>'
 
@@ -117,12 +110,10 @@ def render_search():
         site = []
         image_url = []
         
-        if results is not None:
-            for result in results:
-                result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
+        for result in results:
+            result['price'] = re.sub(r'\.(?=.*\.)', "", extract_and_format_numbers(result['price']).replace(extract_and_format_numbers(result['price'])[0], "", 1))
 
-        if results is not None:
-            results.sort(key=lambda x: (try_float(x['price'])))        
+        results.sort(key=lambda x: (float(x['price'])))        
 
         if results:
             for result in results:
