@@ -11,19 +11,19 @@
 [![Close as a feature](https://github.com/SE23-Team44/slash-phase4/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/SE23-Team44/slash-phase4/actions/workflows/close_as_a_feature.yml)
 
 <!--Badges-->
-<a href="https://github.com/SE23-Team44/slash-phase4/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/SE23-Team44/slash-phase4"></a>
-<a href="https://github.com/SE23-Team44/slash-phase4/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/SE23-Team44/slash-phase4"></a>
-<a href="https://github.com/SE23-Team44/slash-phase4/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/SE23-Team44/slash-phase4"></a>
-<a href="https://github.com/SE23-Team44/slash-phase4/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SE23-Team44/slash-phase4"></a>
-<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/SE23-Team44/slash-phase4">
-<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/SE23-Team44/slash-phase4">
+<a href="https://github.com/SE23-Team44/slash-phase4/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/MeryHarikaG/slash-phase5"></a>
+<a href="https://github.com/MeryHarikaG/slash-phase5/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/MeryHarikaG/slash-phase5"></a>
+<a href="https://github.com/MeryHarikaG/slash-phase5/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MeryHarikaG/slash-phase5"></a>
+<a href="https://github.com/MeryHarikaG/slash-phase5/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/MeryHarikaG/slash-phase5"></a>
+<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/MeryHarikaG/slash-phase5">
+<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/MeryHarikaG/slash-phase5">
 <img alt="Discord Channel" src="https://img.shields.io/discord/1162231656980168876">
 
 
 <p align="center">
-    <a href="https://github.com/SE23-Team44/slash-phase4/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/MeryHarikaG/slash-phase5/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/SE23-Team44/slash-phase4/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/MeryHarikaG/slash-phase5/issues/new/choose">Request Feature</a>
 </p>
 
 
