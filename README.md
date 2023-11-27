@@ -12,7 +12,7 @@
 
 <!--Badges-->
 <a href="https://github.com/MeryHarikaG/slash-phase5/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/MeryHarikaG/slash-phase5"></a>
-<a href="https://github.com/MeryHarikaG/slash-phase5/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/MeryHarikaG/slash-phase5"></a>
+<a href="https://github.com/MeryHarikaG/slash-phase5/forks"><img alt="GitHub forks" src="https://img.shields.io/github/forks/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/MeryHarikaG/slash-phase5"></a>
 <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/MeryHarikaG/slash-phase5">
