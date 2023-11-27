@@ -15,8 +15,8 @@
 <a href="https://github.com/MeryHarikaG/slash-phase5/forks"><img alt="GitHub forks" src="https://img.shields.io/github/forks/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/MeryHarikaG/slash-phase5"></a>
 <a href="https://github.com/MeryHarikaG/slash-phase5/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/MeryHarikaG/slash-phase5"></a>
-<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/MeryHarikaG/slash-phase5">
-<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/MeryHarikaG/slash-phase5">
+<a href="https://github.com/MeryHarikaG/slash-phase5/issues"><img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/MeryHarikaG/slash-phase5">
+<a href="https://github.com/MeryHarikaG/slash-phase5/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/MeryHarikaG/slash-phase5">
 <img alt="Discord Channel" src="https://img.shields.io/discord/1162231656980168876">
 
 
@@ -158,8 +158,6 @@ Future Roadmap
 
 * Multi-Platform Integration: Expand the platform's capabilities by incorporating search results from various e-commerce platforms such as Etsy, Dick's Sporting Goods, and more. This will provide users with optimized outcomes from a diverse selection of online vendors.
 
-* Highlight Cheapest Product: Highlight the most affordable product in the result table and display it separately for an easier user experience. This feature can help users quickly identify the best deals.
-
 * Social Media Login: Add support for different methods of login, such as Gmail, Facebook, or other social media accounts, to provide users with convenient and secure login options.
 
 * Price Chart Visualization: Introduce a visual representation of price trends for products. This feature can help users understand historical price changes and make more informed purchasing decisions.
@@ -180,7 +178,7 @@ Future Roadmap
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of Maintaining a good Software Engineering project. We would also like to thank the teaching assistants for their support throughout the project.
-We would also like to extend our gratitude to previous group : https://github.com/rohan22shah/slash-phase3
+We would also like to extend our gratitude to previous group : https://github.com/SE23-Team44/slash-phase4
 - [https://streamlit.io/](https://streamlit.io/)
 - [https://shields.io/](https://shields.io/)
 
