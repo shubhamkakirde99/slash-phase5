@@ -1,5 +1,5 @@
 """
-Copyright (c) 2023 Sharat Neppalli
+Copyright (c) 2023 Mery Harika Gaddam
 This code is licensed under MIT license (see LICENSE.MD for details)
 
 @author: Slash
