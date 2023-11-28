@@ -154,17 +154,15 @@ streamlit run slash_user_interface.py
    - Functionality: Improvements include streamlined navigation, responsive design elements, and a more cohesive color scheme and typography, enhancing overall user interaction with the application.
 5. **Wishlist and Registration Bug Fixes**
    - Description: We addressed and resolved previously identified bugs in the wishlist and registration pages.
-   - Functionality: Users can now seamlessly add or remove items from their wishlist without encountering errors, and the registration process has been optimized for better reliability and user feedback.
+   - Functionality: Users can now seamlessly add or remove items from their wishlist without encountering errors, and the registration process has been optimized for better reliability and user feedback. Most recently added item to wishlist is highlighted and list is displayed based on time of the addition of item to wishlist. Recently added items are displayed first on the list.
 
-<img src = https://github.com/SE23-Team44/slash-phase4/blob/main/assets/search%20gif.gif>
+<img src = https://github.com/MeryHarikaG/slash-phase5/blob/main/media/Website_1.png>
 
 :golf: Future Roadmap
 ---
 Future Roadmap
 
 * Pagination Feature: Implement a pagination feature for the result table allowing to scrape and display multiple results from various e-commerce sites in an organized manner.
-
-* UI Enhancement: Continue to enhance the user interface to provide an even better user experience. Consider improving aesthetics, user-friendliness, and overall design.
 
 * Additional Account Settings: Introduce additional account settings to give users more control over their profiles and preferences, enhancing their personalization and usability.
 
