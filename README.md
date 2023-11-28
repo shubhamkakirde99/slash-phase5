@@ -182,14 +182,13 @@ Future Roadmap
 
 :sparkles: Contributors
 ---
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/MeryHarikaG"><br/><sub><b>Mery Harika Gaddam</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/kothasrilakshmi"><br /><sub><b>Sri Lakshmi Kotha</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/tbattul"><br/><sub><b>Tanmaiyee Reddy Battula</b></sub></a></td>
-    <td align="center"><a href="https://github.com/kavyajoshi510"><br /><sub><b>Kavya Lalbahadur Joshi</b></sub></a><br /></td>
-</tr>
-</table>
+
+1. Mery Harika Gaddam (mgaddam@ncsu.edu)
+2. Sri Lakshmi Kotha (skotha2@ncsu.edu)
+3. Tanmaiyee Battula (tbattul@ncsu.edu)
+4. Kavya Lalbahadur Joshi (kjoshi4@ncsu.edu)
+
+
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of Maintaining a good Software Engineering project. We would also like to thank the teaching assistants for their support throughout the project.
