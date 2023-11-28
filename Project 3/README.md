@@ -1,4 +1,4 @@
-<p align="center"><img width="500" src="./assets/slash.png"></p>
+<p align="center"><img width="500" src="../assets/slash.png"></p>
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10211531.svg)](https://doi.org/10.5281/zenodo.10211531)
 
