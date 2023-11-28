@@ -29,7 +29,10 @@
     <a href="https://github.com/MeryHarikaG/slash-phase5/issues/new/choose">Request Feature</a>
 </p>
 
-**All the latest changes in slash-phase5 are in "main" branch. Score cards (Rubric) are in "Project 3" folder.**
+```diff
+@@ All the latest changes in slash-phase5 are in "main" branch. Score cards (Rubric) are in "Project 3" folder. (and bold)@@
+```
+
 
 Do you love shopping? Are you in search of some good deals while shopping online?! Slash is here to help you look for the best deals!
 
