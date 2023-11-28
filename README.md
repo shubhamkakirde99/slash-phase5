@@ -97,7 +97,7 @@ ii. Locate the top section of the code where you define the database connection 
    ```
 Replace username and password value from 'postgres', 'pass' with your PostgreSQL username password, respectively.
 
-4. Once all the requirements are installed, you will have to ```cd``` into the ```src``` folder. Once in the ```src``` folder, use the python command to run the ```main.py``` file.
+4. Once all the requirements are installed, you will have to ```cd``` into the ```src``` folder. Once in the ```src``` folder, use the python command to run the ```main.py``` file. (/MeryHarikaG/slash-phase5/src => you should be at this level)
 ```
 cd src
 
@@ -107,7 +107,7 @@ python3 main.py
 For Windows
 python main.py
 ```
-5. While the above is running, go to new terminal and run streamlit application. Firstly go up one directory level using ```cd ..``` and use the following command:
+5. While the above is running, go to new terminal and run streamlit application. Firstly go up one directory level using ```cd ..``` and use the following command:  (/MeryHarikaG/slash-phase5 => you should be at this level)
 ```
 For Mac
 python3 -m streamlit run slash_user_interface.py
