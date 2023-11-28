@@ -22,7 +22,7 @@
 |other automated analysis tools  |3| Yes, Used automated tool Pylint. https://github.com/MeryHarikaG/slash-phase5/actions/workflows/pylint.yml|
 |test cases exist  |3| Yes, Test cases exist.https://github.com/MeryHarikaG/slash-phase5/actions/workflows/unit_test.yml|
 |test cases are routinely executed |3| Github actions are used. After every commit to main branch, automated scripts are run for test cases and a badge is shown in the main project folder and README to indicate if build is successful.|
-|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |3|Evidence in Contrbuting.md.https://github.com/MeryHarikaG/slash-phase5/edit/main/CONTRIBUTING.md|
+|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |3|Evidence in Contrbuting.md.https://github.com/MeryHarikaG/slash-phase5/blob/main/CONTRIBUTING.md|
 |issues are discussed before they are closed |3| After a team member fix the issue, a PR is raised, and the code is reviewed by one of the team members. If any issue is observed, it is communicated through comments in the issue. Once good to be closed, developer is tagged in order to notify. https://chat.whatsapp.com/CcQJ1y1LjzRFgbpe7tvOuB|
 |Chat channel exists|3|https://chat.whatsapp.com/CcQJ1y1LjzRFgbpe7tvOuB|
 |test cases:.a large proportion of the issues related to handling failing cases. |3| We ensured that every part of the code works correctly. |
@@ -45,7 +45,7 @@
 |If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software?|3|Step by step instructions are given. https://github.com/MeryHarikaG/slash-phase5/blob/main/README.md#rocket-installation|
 |Do you provide a comprehensive guide to all your software’s commands, functions and options?|3|https://github.com/MeryHarikaG/slash-phase5/blob/main/README.md#movie_camera-checkout-our-video|
 |Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages?|3|https://github.com/MeryHarikaG/slash-phase5/blob/main/README.md|
-|If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation?|3|https://github.com/MeryHarikaG/slash-phase5/blob/main/docs/Code%20Description.pdf|
+|If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation?|3|https://github.com/MeryHarikaG/slash-phase5/blob/main/docs/Code%20Description_Phase-5.pdf|
 |Do you store your documentation under revision control with your source code?|3|https://github.com/MeryHarikaG/slash-phase5/tree/main|
 |Do you publish your release history e.g. release data, version numbers, key features of each release etc. on your web site or in your documentation?|3|https://github.com/MeryHarikaG/slash-phase5/blob/main/README.md|
 |Does your software describe how a user can get help with using your software?|3|https://github.com/MeryHarikaG/slash-phase5#interrobang-troubleshooting|
