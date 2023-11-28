@@ -206,8 +206,7 @@ def render_search():
         </style>
         <div class="footer">
         <p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/sathiya06/slash-phase3" target="_blank">slash</a></p>
-        <p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Rohan Shah</a></p>
-        <p>Contributors: Aadithya, Dhiraj, Sathya, Sharat</p>
+        <p>Contributors: Harika, Lakshmi, Kavya, Tanmaiyeet</p>
         </div>
         """
         # st.markdown(footer, unsafe_allow_html=True)
