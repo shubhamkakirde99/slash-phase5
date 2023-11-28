@@ -1,10 +1,3 @@
-"""
-Copyright (c) 2023 Sharat Neppalli
-This code is licensed under MIT license (see LICENSE.MD for details)
-
-@author: Slash
-"""
-
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base

@@ -1,10 +1,3 @@
-"""
-Copyright (c) 2023 Sharat Neppalli
-This code is licensed under MIT license (see LICENSE.MD for details)
-
-@author: Slash
-"""
-
 # importing necessary modules
 from fastapi import Depends, HTTPException, APIRouter, Request, Response, Form
 from fastapi.templating import Jinja2Templates
