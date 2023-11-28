@@ -107,7 +107,7 @@ python3 main.py
 For Windows
 python main.py
 ```
-5. To run streamlit application. First go up one directory level using ```cd ..``` and use the following command:
+5. While the above is running, go to new terminal and run streamlit application. Firstly go up one directory level using ```cd ..``` and use the following command:
 ```
 For Mac
 python3 -m streamlit run slash_user_interface.py
@@ -150,13 +150,18 @@ streamlit run slash_user_interface.py
    - Description: To aid users in quickly identifying the most affordable options, the cheapest product in any search or filter result is now highlighted.
    - Functionality: This visual cue helps users easily locate the best deals without having to manually compare prices.
 4. **Enhanced User Interface**
-   - Description: The user interface has been overhauled for a more intuitive and aesthetically pleasing experience.
+   - Description: Made the UI user friendly and more informative, so that user can use the application easily. The user interface has also been overhauled for a more intuitive and aesthetically pleasing experience.
    - Functionality: Improvements include streamlined navigation, responsive design elements, and a more cohesive color scheme and typography, enhancing overall user interaction with the application.
-5. **Wishlist and Registration Bug Fixes**
+5. **Wishlist page Enhancements**
+   - Description: Most recently added item to wishlist is highlighted and list is displayed based on time of the addition of item to wishlist.
+   - Functionality: Recently added items are displayed first on the list. 
+6. **Wishlist and Registration Bug Fixes**
    - Description: We addressed and resolved previously identified bugs in the wishlist and registration pages.
-   - Functionality: Users can now seamlessly add or remove items from their wishlist without encountering errors, and the registration process has been optimized for better reliability and user feedback. Most recently added item to wishlist is highlighted and list is displayed based on time of the addition of item to wishlist. Recently added items are displayed first on the list.
+   - Functionality: Users can now seamlessly add or remove items from their wishlist without encountering errors, and the registration process has been optimized for better reliability and user feedback.
 
-<img src = https://github.com/MeryHarikaG/slash-phase5/blob/main/media/Website_1.png>
+<img src = https://github.com/MeryHarikaG/slash-phase5/blob/main/media/Website_2.png>
+<img src = https://github.com/MeryHarikaG/slash-phase5/blob/main/media/Website_3.png>
+<img src = https://github.com/MeryHarikaG/slash-phase5/blob/main/media/Wishlist%20page.png>
 
 :golf: Future Roadmap
 ---
