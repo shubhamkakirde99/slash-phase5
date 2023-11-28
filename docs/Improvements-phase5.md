@@ -15,6 +15,9 @@ Following are the improvements made in the phase 5 of the project:
 **Phase 4** : In Phase 4, we introduced the ability for users to save specific search results upon login, enhancing usability by providing easy access through the wishlist feature.<br>
 **Phase 5** : In the phase 5, we gave instructions on how users can access the feature properly by loggin in first and then adding products to the wishlist. We addressed and resolved previously identified bugs in the wishlist and registration pages. Users can now seamlessly add or remove items from their wishlist without encountering errors, and the registration process has been optimized for better reliability and user feedback. <br>
 
+## Wishlist page Enhancements**
+**Phase 5** : In the phase 5, most recently added item to wishlist is highlighted and list is displayed based on time of the addition of item to wishlist. Recently added items are displayed first on the list. 
+
 ## Integrated user-based login feature
 **Phase 3** : In the phase 3, user login functionality was not available, which made users unable to save thier search.<br>
 **Phase 4** : In the phase 4, we introduced user-based login functionality powered by PostgreSQL and JWT, allowing users to securely log in and enhance their product searching experience.<br>
