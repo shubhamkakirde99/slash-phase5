@@ -1,9 +1,3 @@
-"""
-Copyright (c) 2023 Dhiraj Venugopal
-This code is licensed under MIT license (see LICENSE.MD for details)
-
-@author: Slash
-"""
 from currency_converter import CurrencyConverter
 
 def extractValue(price):
