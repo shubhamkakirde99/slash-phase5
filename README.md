@@ -30,7 +30,8 @@
 </p>
 
 ```diff
-@@ All the latest changes in slash-phase5 are in "main" branch. Score cards (Rubric) are in "Project 3" folder. (and bold)@@
+! All the latest changes in slash-phase5 are in "main" branch.
+! Score cards (Rubric) are in "Project 3" folder.
 ```
 
 
