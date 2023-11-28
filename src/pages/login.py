@@ -1,10 +1,3 @@
-"""
-Copyright (c) 2023 Sharat Neppalli
-This code is licensed under MIT license (see LICENSE.MD for details)
-
-@author: Slash
-"""
-
 import requests
 import streamlit as st
 from src.pages.wishlist import render_wishlist
