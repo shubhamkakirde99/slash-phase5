@@ -1,15 +1,7 @@
 from setuptools import setup
 from setuptools.extension import Extension
 
-setup(
-    ext_modules=[
-        Extension(
-            'psycopg2',
-            sources=['psycopg2.c'],
-            extra_compile_args=['/usr/bin/pg_config']
-        )
-    ],
-    name='slash',
+setup(name='slash',
       version='3.0',
       description='Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across these websites.',
       author='Anshul, Bhavya, Darshan, Pragna, Rohan',
